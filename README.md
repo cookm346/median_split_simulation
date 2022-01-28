@@ -59,7 +59,7 @@ monte_carlo_simulation <- function(n, r, p, n_sims = 10000){
 
 <br />
 
-### Run simulation for correlation and t-test with top and bottom 33% split simulation
+### Run simulation for correlation and t-test with median split simulation
 
 Here I generate an x and y variable from a known distribution, conduct a
 correlation, conduct a median split and t-test, then record the p values
@@ -83,7 +83,7 @@ results <- map2_df(params$sample_sizes, params$cors, monte_carlo_simulation, p =
 
 <br />
 
-### Plot simulation for correlation and t-test with top and bottom 33% split simulation
+### Plot simulation for correlation and t-test with median split simulation
 
 ``` r
 ### plot population correlation data
@@ -228,12 +228,12 @@ set.seed(1234567)
 params <- expand.grid(sample_sizes = c(10, 25, 50, 75, 100),
                       cors = seq(0, 0.8, 0.1))
 
-results <- map2_df(params$sample_sizes, params$cors, monte_carlo_simulation, p = 0.25)
+results <- map2_df(params$sample_sizes, params$cors, monte_carlo_simulation, p = 0.33)
 ```
 
 <br />
 
-### Plot results from correlation and t-test with top and bottom 33% split simulation
+### Plot results from correlation and t-test with top and bottom 25% split simulation
 
 ``` r
 p1 <- plot_cor_data(n = 10000, r = 0)
